@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Button from "./Button";
+import Input from "./Input";
+
+//renderizar input i botones
+//Almacenar un valor numérico
+//Incrementar el valor (hasta 10)
+//decrementar el valor (hasta 0)
+//pasarle el valor numerico al input
 
 function App() {
+  const [number, setNumber] = useState(0);
+  const incrementar = () => {
+    if (number < 10) {
+      setNumber(number + 1);
+    }
+  };
+  const decrementar = () => {
+    if (number > 0) {
+      setNumber(number - 1);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Button text="-" actionOnClick={decrementar} />
+      <Input number={number} />
+      <Button text="+" actionOnClick={incrementar} />
+    </>
   );
 }
 
